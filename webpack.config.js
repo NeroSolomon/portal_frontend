@@ -11,6 +11,13 @@ module.exports = {
     publicPath: '/dist/', 
     filename: 'js/app.js'
   },
+  resolve: {
+    // 设置快捷目录
+    alias: {
+      page: path.resolve(__dirname, 'src/page'),
+      component: path.resolve(__dirname, 'src/component/')
+    }
+  },
   module: {
     rules: [
       {
@@ -65,7 +72,8 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './src/index.html'
+      template: './src/index.html',
+      favicon: './favicon.ico'
     }),
     // 独立css文件
     new ExtractTextPlugin("css/[name].css"),
@@ -78,5 +86,8 @@ module.exports = {
   // webpack服务
   devServer: {
     port: 8086, // 8080很多东西在用，以免起冲突
+    historyApiFallback: {
+      index: '/dist/index.html'
+    }
   }
 };

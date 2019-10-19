@@ -1,9 +1,28 @@
 import React from 'react';
 import ReactDOM from 'react-dom'
-import { HashRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 
-import './index.scss'
+// 页面
+import Home from 'page/home/index.jsx';
+// 组件
+import Layout from 'component/layout/index.jsx';
 
-let jsx = <div>jsx..</div>
+class App extends React.Component {
+  render() {
+    return (
+      <Router>
+        <Layout>
+          <Switch>
+            <Route path="/" exact component={Home} />
+            <Route path="/product" exact component={Home} />
+            <Route path="/product/category" exact component={Home} />
+            <Route path="/order" exact component={Home} />
+            <Route path="/user" exact component={Home} />
+          </Switch>
+        </Layout>
+      </Router>
+    );
+  }
+}
 
-ReactDOM.render(jsx, document.getElementById('app'));
+ReactDOM.render(<App />, document.getElementById('app'));
