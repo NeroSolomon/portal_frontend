@@ -39,6 +39,30 @@ class MUtil {
   errorTips(msg) {
     console.log(msg)
   }
+
+  setStorage(name, data) {
+    let dataType = typeof data;
+    if (dataType === 'object') {
+      window.localStorage.setItem(name, JSON.stringify(data));
+    } else if (['number', 'string', 'boolean'].indexOf(dataType) > -1) {
+      window.localStorage.setItem(name, data);
+    } else {
+      console.log('该乐境不能用于本地存储');
+    }
+  }
+
+  getStorage(name) {
+    let data = window.localStorage.getItem(name);
+    if (data) {
+      return  JSON.parse(data)
+    } else {
+      return '';
+    }
+  }
+
+  removeStorage(name) {
+    window.localStorage.removeItem(name);
+  }
 }
 
 export default MUtil;

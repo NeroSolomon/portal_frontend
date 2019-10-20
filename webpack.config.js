@@ -98,6 +98,11 @@ module.exports = {
         target: 'http://admintest.happymmall.com',
         // 改变发送路径
         changeOrigin: true
+      },
+      '/user': {
+        target: 'http://admintest.happymmall.com',
+        // 改变发送路径
+        changeOrigin: true
       }
     }
   }
