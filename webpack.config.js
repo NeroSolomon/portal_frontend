@@ -15,7 +15,9 @@ module.exports = {
     // 设置快捷目录
     alias: {
       page: path.resolve(__dirname, 'src/page'),
-      component: path.resolve(__dirname, 'src/component/')
+      component: path.resolve(__dirname, 'src/component'),
+      util: path.resolve(__dirname, 'src/util'),
+      service: path.resolve(__dirname, 'src/service')
     }
   },
   module: {
@@ -88,6 +90,15 @@ module.exports = {
     port: 8086, // 8080很多东西在用，以免起冲突
     historyApiFallback: {
       index: '/dist/index.html'
+    },
+    // 代理发送出去的请求，防止跨域
+    proxy: {
+      // 匹配/manage开头的请求
+      '/manage': {
+        target: 'http://admintest.happymmall.com',
+        // 改变发送路径
+        changeOrigin: true
+      }
     }
   }
 };
