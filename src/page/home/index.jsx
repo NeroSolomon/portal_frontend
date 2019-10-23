@@ -43,7 +43,7 @@ class Home extends React.Component {
         <PageTitle title="首页"/>
         <div className="row">
           <div className="col-md-4">
-            <Link to="/user" className="color-box brown">
+            <Link to="/newuser" className="color-box brown">
               <p className="count">{userCount}</p>
               <p className="desc">
                 <i className="fa fa-user-o"></i>

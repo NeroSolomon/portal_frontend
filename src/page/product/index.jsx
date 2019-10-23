@@ -47,7 +47,6 @@ class ProductList extends React.Component {
   }
 
   onSetProductStatus(e, id, status) {
-    console.log(id);
     let newStatus = status == 1 ? 2 : 1,
     tips = status == 1 ? '确定下架该商品' : '确认上架该商品？';
     if (window.confirm(tips)) {

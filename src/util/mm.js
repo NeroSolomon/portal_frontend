@@ -36,6 +36,10 @@ class MUtil {
     return result ? decodeURIComponent(result[2]) : null;
   }
 
+  successTips(msg) {
+    console.log(msg)
+  }
+
   errorTips(msg) {
     console.log(msg)
   }

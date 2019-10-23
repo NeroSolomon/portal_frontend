@@ -41,14 +41,14 @@ class SideNav extends React.Component {
               </ul>
             </li>
             <li className="active">
-              <Link to="/user">
+              <Link to="/newuser">
                 <i className="fa fa-check-square-o"></i>
                 <span>用户</span>
                 <span className="fa arrow"></span>
               </Link>
               <ul className="nav nav-second-level collapse in">
                 <li>
-                  <NavLink exact to="/user" activeClassName="active-menu">用户管理</NavLink>
+                  <NavLink exact to="/newuser" activeClassName="active-menu">用户管理</NavLink>
                 </li>
               </ul>
             </li>
