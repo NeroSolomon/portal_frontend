@@ -22,6 +22,16 @@ class User {
     })
   }
 
+  getUserList(pageNum) {
+    return _mm.request({
+      type: 'post',
+      url: '/manage/user/list.do',
+      data: {
+        pageNum
+      }
+    })
+  }
+
   checkLoginInfo(info) {
     const username = $.trim(info.username);
     const password = $.trim(info.password);
