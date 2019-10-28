@@ -18,7 +18,10 @@ class ProductList extends React.Component {
     super(props);
     this.state = {
       list: [],
-      pageNum: 1
+      pageNum: 1,
+      searchType: 'productID',
+      searchKeyword: '',
+      listType: 'list'
     };
   }
 
@@ -27,8 +30,15 @@ class ProductList extends React.Component {
   }
 
   loadProductList() {
-    const { pageNum } = this.state;
-    _product.getProductList(pageNum).then(res => {
+    const { pageNum, listType, searchType, searchKeyword } = this.state;
+    let listParam = { listType, pageNum };
+
+    if (listType === 'search') {
+      listParam.searchType = searchType;
+      listParam.searchKeyword = searchKeyword;
+    }
+
+    _product.getProductList(listParam).then(res => {
       this.setState(res)
     }, err => {
       this.setState({
@@ -60,6 +70,22 @@ class ProductList extends React.Component {
         _mm.errorTips(err);
       })
     }
+  }
+
+  onChangeValue(obj) {
+    this.setState(obj);
+  }
+
+  onSearch(e) {
+    e.preventDefault();
+    const { searchKeyword } = this.state;
+    let listType = searchKeyword === '' ? 'list' : 'search';
+    this.setState({
+      listType,
+      pageNum: 1
+    }, () => {
+      this.loadProductList.call(this);
+    })
   }
 
   render () {
@@ -117,11 +143,31 @@ class ProductList extends React.Component {
 
     return (
       <div id="page-wrapper">
-        <PageTitle title="商品列表" />
+        <PageTitle title="商品列表">
+          <div className="page-header-right">
+            <Link className="btn btn-primary" to="/product/save"><i className="fa fa-plus"></i>添加商品</Link>
+          </div>
+        </PageTitle>
+        <div className="row search-wrap">
+          <div className="col-md-12">
+            <form className="form-inline">
+              <div className="form-group">
+                <select className="form-control" onChange={(e) => this.onChangeValue.call(this, {searchType: e.target.value})}>
+                  <option value="productID">按商品ID查询</option>
+                  <option value="productName">按商品名称查询</option>
+                </select>
+              </div>
+              <div className="form-group">
+                <input type="text" className="form-control" placeholder="关键词" onChange={(e) => this.onChangeValue.call(this, {searchKeyword: e.target.value})} />
+              </div>
+              <button type="submit" className="btn btn-primary" onClick={this.onSearch.bind(this)}>搜索</button>
+            </form>
+          </div>
+        </div>
         <TableList tableHeader={tableHeader}>
           {listBody}
         </TableList>
-        <Pagination current={pageNum} total={total} onChange={this.onPageNumChange.bind(this)}/>
+        <Pagination current={pageNum} total={total} onChange={e => this.onPageNumChange.call(this, e)}/>
       </div>
     );
   }
