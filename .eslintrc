@@ -1,13 +1,25 @@
 {
   "root": true,
   "extends": [
+    "plugin:prettier/recommended",
     "prettier",
-    "eslint:recommended"
+    "eslint:recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings"
   ],
   "parser": "babel-eslint",
   "plugins": [
-    "prettier"
+    "prettier",
+    "react"
   ],
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+
   "env": {
     "es6": true,
     "browser": true,
