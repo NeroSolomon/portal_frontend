@@ -1,7 +1,8 @@
 import React from 'react';
-import PageTitle from 'component/page-title/index.jsx';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux'
 import Mutil from 'util/mm.js';
+import PageTitle from 'component/page-title/index.jsx';
 import Statistic from 'service/statistic-service.js';
 
 import './index.scss';
@@ -37,6 +38,8 @@ class Home extends React.Component {
       productCount,
       orderCount
     } = this.state;
+    const { auth } = this.props;
+    console.log(auth);
 
     return (
       <div id="page-wrapper">
@@ -75,4 +78,10 @@ class Home extends React.Component {
   }
 }
 
-export default Home;
+const mapStateToProps = state => {
+  const { auth } = state;
+  return {auth}
+}
+
+
+export default connect(mapStateToProps)(Home);
