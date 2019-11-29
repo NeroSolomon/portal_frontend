@@ -36,15 +36,15 @@ class Login extends React.Component {
       _mm.errorTips(checkResult.msg);
       return;
     };
-    _user.Login({
-      username,
-      password
-    }).then((res) => {
-      _mm.setStorage('userinfo', res)
-      this.props.history.push(this.state.redirect);
-    }, (err) => {
-      _mm.errorTips(err)
-    })
+    // _user.Login({
+    //   username,
+    //   password
+    // }).then((res) => {
+    //   _mm.setStorage('userinfo', res)
+    //   this.props.history.push(this.state.redirect);
+    // }, (err) => {
+    //   _mm.errorTips(err)
+    // })
   }
 
   render() {

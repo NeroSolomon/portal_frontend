@@ -9,7 +9,7 @@ import {
 import initialState from './initial-state.js';
 
 export default function auth(state = initialState.auth, action) {
-  const { msg, accessToken, publisherId } = action;
+  const { msg } = action;
   switch (action.type) {
     case LOGIN_REQUEST:
       return Object.assign({}, state, {
@@ -20,9 +20,7 @@ export default function auth(state = initialState.auth, action) {
       return Object.assign({}, state, {
         isFetching: false,
         isAuthenticated: true,
-        error: null,
-        accessToken,
-        publisherId
+        error: null
       });
     case LOGIN_FAILURE:
       return Object.assign({}, state, {

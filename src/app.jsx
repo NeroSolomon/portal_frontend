@@ -1,8 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux';
-import { BrowserRouter as Router, Route, Switch, history } from 'react-router-dom';
-import { syncHistoryWithStore } from 'react-router-redux';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import configStore from './store/store-config.js';
 
@@ -16,7 +15,6 @@ import ProductSave from 'page/product/save.jsx';
 import Layout from 'component/layout/index.jsx';
 
 const store = configStore();
-const history = syncHistoryWithStore(history, store);
 
 class App extends React.Component {
   render() {

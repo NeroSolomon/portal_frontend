@@ -15,12 +15,12 @@ class TopNav extends React.Component {
   }
 
   onLogout() {
-    _user.Logout().then(res => {
-      _mm.removeStorage('userinfo');
-      window.location.href = '/login';
-    }, errMsg => {
-      _mm.errorTips(errMsg);
-    })
+    // _user.Logout().then(res => {
+    //   _mm.removeStorage('userinfo');
+    //   window.location.href = '/login';
+    // }, errMsg => {
+    //   _mm.errorTips(errMsg);
+    // })
   }
 
   render() {

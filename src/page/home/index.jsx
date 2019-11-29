@@ -24,11 +24,11 @@ class Home extends React.Component {
   }
 
   loadCount() {
-    _statistic.getHomeCount().then(res => {
-      this.setState(res);
-    }, err => {
-      _mm.errorTips(err);
-    })
+    // _statistic.getHomeCount().then(res => {
+    //   this.setState(res);
+    // }, err => {
+    //   _mm.errorTips(err);
+    // })
   }
 
   render () {
