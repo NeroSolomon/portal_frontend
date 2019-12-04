@@ -1,8 +1,11 @@
 import React from 'react';
-import PageTitle from 'component/page-title/index.jsx';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux'
 import Mutil from 'util/mm.js';
+import PageTitle from 'component/page-title/index.jsx';
 import Statistic from 'service/statistic-service.js';
+import { requestLogin } from 'actions/auth.js';
+import { storeTest } from 'actions/test-store.js';
 
 import './index.scss';
 
@@ -24,11 +27,17 @@ class Home extends React.Component {
   }
 
   loadCount() {
-    _statistic.getHomeCount().then(res => {
-      this.setState(res);
-    }, err => {
-      _mm.errorTips(err);
-    })
+    // _statistic.getHomeCount().then(res => {
+    //   this.setState(res);
+    // }, err => {
+    //   _mm.errorTips(err);
+    // })
+  }
+
+  onChangeState() {
+    const { dispatch } = this.props;
+    dispatch(requestLogin());
+    dispatch(storeTest());
   }
 
   render () {
@@ -37,6 +46,9 @@ class Home extends React.Component {
       productCount,
       orderCount
     } = this.state;
+    const { auth, testStore } = this.props;
+    console.log(auth);
+    console.log(testStore);
 
     return (
       <div id="page-wrapper">
@@ -70,9 +82,18 @@ class Home extends React.Component {
             </Link>
           </div>
         </div>
+        <div>
+          <button onClick={this.onChangeState.bind(this)}>change auth state</button>
+        </div>
       </div>
     );
   }
 }
 
-export default Home;
+const mapStateToProps = state => {
+  const { auth, testStore } = state;
+  return {auth, testStore}
+}
+
+
+export default connect(mapStateToProps)(Home);

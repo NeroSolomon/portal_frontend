@@ -22,13 +22,13 @@ class categorySelector extends React.Component {
   }
 
   loadFirstCategory() {
-    _product.getCategoryList().then(res => {
-      this.setState({
-        firstCategoryList: res
-      })
-    }, err => {
-      _mm.errorTips(err);
-    })
+    // _product.getCategoryList().then(res => {
+    //   this.setState({
+    //     firstCategoryList: res
+    //   })
+    // }, err => {
+    //   _mm.errorTips(err);
+    // })
   }
 
   onFirstChange(e) {
@@ -44,14 +44,14 @@ class categorySelector extends React.Component {
   }
 
   loadSecondCategory() {
-    const { firstCategoryId } = this.state;
-    _product.getCategoryList(firstCategoryId).then(res => {
-      this.setState({
-        secondCategoryList: res
-      })
-    }, err => {
-      _mm.errorTips(err);
-    })
+    // const { firstCategoryId } = this.state;
+    // _product.getCategoryList(firstCategoryId).then(res => {
+    //   this.setState({
+    //     secondCategoryList: res
+    //   })
+    // }, err => {
+    //   _mm.errorTips(err);
+    // })
   }
 
   onPropsCategoryChange() {

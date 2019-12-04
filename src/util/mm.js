@@ -17,7 +17,7 @@ class MUtil {
           }
         },
         error: err => {
-          typeof reject == 'function' && resolve(res.statusText);
+          typeof reject == 'function' && resolve(err.statusText);
         }
       })
     })

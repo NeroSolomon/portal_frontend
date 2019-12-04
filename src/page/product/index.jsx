@@ -38,14 +38,14 @@ class ProductList extends React.Component {
       listParam.searchKeyword = searchKeyword;
     }
 
-    _product.getProductList(listParam).then(res => {
-      this.setState(res)
-    }, err => {
-      this.setState({
-        list: []
-      })
-      _mm.errorTips(err);
-    })
+    // _product.getProductList(listParam).then(res => {
+    //   this.setState(res)
+    // }, err => {
+    //   this.setState({
+    //     list: []
+    //   })
+    //   _mm.errorTips(err);
+    // })
   }
 
   onPageNumChange(pageNum) {

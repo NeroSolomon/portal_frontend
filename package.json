@@ -4,8 +4,11 @@
   "description": "Just for study",
   "main": "index.js",
   "scripts": {
-    "dev": "node_modules/.bin/webpack-dev-server",
-    "dist": "node_modules/.bin/webpack -p"
+    "clean": "rimraf ./dist",
+    "dev": "node tools/server.js",
+    "test": "npm run clean && node tools/build.js --test",
+    "build": "npm run clean && node tools/build.js --prod",
+    "lint": "eslint --ext .js --ignore-path .gitignore ."
   },
   "author": "Nero",
   "license": "ISC",
@@ -14,17 +17,21 @@
     "babel-loader": "7.1.2",
     "babel-preset-env": "1.6.1",
     "babel-preset-react": "6.24.1",
+    "browser-sync": "^2.26.7",
     "css-loader": "0.28.8",
     "extract-text-webpack-plugin": "3.0.2",
     "file-loader": "1.1.6",
     "html-webpack-plugin": "2.30.1",
     "node-sass": "4.7.2",
+    "ora": "^4.0.3",
     "react-helmet": "^5.2.1",
+    "redux-logger": "^3.0.6",
     "sass-loader": "6.0.6",
     "style-loader": "0.19.1",
     "url-loader": "0.6.2",
     "webpack": "3.10.0",
-    "webpack-dev-server": "2.9.7"
+    "webpack-dev-server": "2.9.7",
+    "webpack-hot-middleware": "^2.25.0"
   },
   "dependencies": {
     "prop-types": "15.6.0",
@@ -32,6 +39,11 @@
     "react": "16.2.0",
     "react-dom": "16.2.0",
     "react-fileupload": "2.4.0",
-    "react-router-dom": "4.2.2"
+    "react-redux": "5.0.6",
+    "react-router-dom": "^5.1.2",
+    "react-router-redux": "^4.0.8",
+    "redux": "^4.0.4",
+    "redux-promise": "^0.6.0",
+    "redux-thunk": "^2.3.0"
   }
 }

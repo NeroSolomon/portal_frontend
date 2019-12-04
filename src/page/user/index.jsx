@@ -23,14 +23,14 @@ class UserList extends React.Component {
 
   loadUserList() {
     const { pageNum } = this.state;
-    _user.getUserList(pageNum).then(res => {
-      this.setState(res)
-    }, err => {
-      this.setState({
-        list: []
-      })
-      _mm.errorTips(err);
-    })
+    // _user.getUserList(pageNum).then(res => {
+    //   this.setState(res)
+    // }, err => {
+    //   this.setState({
+    //     list: []
+    //   })
+    //   _mm.errorTips(err);
+    // })
   }
 
   onPageNumChange(pageNum) {
