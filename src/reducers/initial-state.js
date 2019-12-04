@@ -3,5 +3,8 @@ export default {
     isFetching: false,
     isAuthenticated: false,
     error: null
+  },
+  testStore: {
+    msg: null
   }
 }

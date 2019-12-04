@@ -4,6 +4,8 @@ import { connect } from 'react-redux'
 import Mutil from 'util/mm.js';
 import PageTitle from 'component/page-title/index.jsx';
 import Statistic from 'service/statistic-service.js';
+import { requestLogin } from 'actions/auth.js';
+import { storeTest } from 'actions/test-store.js';
 
 import './index.scss';
 
@@ -32,14 +34,21 @@ class Home extends React.Component {
     // })
   }
 
+  onChangeState() {
+    const { dispatch } = this.props;
+    dispatch(requestLogin());
+    dispatch(storeTest());
+  }
+
   render () {
     const {
       userCount,
       productCount,
       orderCount
     } = this.state;
-    const { auth } = this.props;
+    const { auth, testStore } = this.props;
     console.log(auth);
+    console.log(testStore);
 
     return (
       <div id="page-wrapper">
@@ -73,14 +82,17 @@ class Home extends React.Component {
             </Link>
           </div>
         </div>
+        <div>
+          <button onClick={this.onChangeState.bind(this)}>change auth state</button>
+        </div>
       </div>
     );
   }
 }
 
 const mapStateToProps = state => {
-  const { auth } = state;
-  return {auth}
+  const { auth, testStore } = state;
+  return {auth, testStore}
 }
 
 

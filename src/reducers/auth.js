@@ -14,7 +14,8 @@ export default function auth(state = initialState.auth, action) {
     case LOGIN_REQUEST:
       return Object.assign({}, state, {
         isFetching: true,
-        isAuthenticated: false
+        isAuthenticated: false,
+        error: msg || 'Error'
       });
     case LOGIN_SUCCESS:
       return Object.assign({}, state, {
