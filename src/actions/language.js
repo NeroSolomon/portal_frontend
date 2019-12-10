@@ -66,7 +66,6 @@ export function changeLanguage(key) {
       dispatch(reuseLanguage(appLocale));
     } else {
       dispatch(requestLanguage());
-
       if ('cn' == key) {
         require.ensure(
           [],

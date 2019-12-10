@@ -19,20 +19,27 @@ class LocaleIntl extends Component {
   render() {
     const {
       language,
-      language: { locale }
+      language: { locale, isFetching }
     } = this.props;
     let result = null;
+    if (isFetching && !language[locale]) {
+      // loading language resource
+      result = (
+        <div className="m-loading">
+          loading
+        </div>
+      );
+    } else {
+      // show content
+      const appLocale = language[locale];
+      addLocaleData(appLocale.data);
 
-    // show content
-    const appLocale = language[locale];
-    console.log(appLocale);
-    addLocaleData(appLocale.data);
-
-    result = (
-      <IntlProvider locale={appLocale.locale} messages={appLocale.msg}>
-        {this.props.children}
-      </IntlProvider>
-    );
+      result = (
+        <IntlProvider locale={appLocale.locale} messages={appLocale.msg}>
+          {this.props.children}
+        </IntlProvider>
+      );
+    }
 
     return result;
   }

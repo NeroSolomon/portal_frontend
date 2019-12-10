@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
+import { FormattedMessage } from 'react-intl';
 import Mutil from 'util/mm.js';
 import PageTitle from 'component/page-title/index.jsx';
 import Statistic from 'service/statistic-service.js';
@@ -47,8 +48,8 @@ class Home extends React.Component {
       orderCount
     } = this.state;
     const { auth, testStore } = this.props;
-    console.log(auth);
-    console.log(testStore);
+    // console.log(auth);
+    // console.log(testStore);
 
     return (
       <div id="page-wrapper">
@@ -84,6 +85,9 @@ class Home extends React.Component {
         </div>
         <div>
           <button onClick={this.onChangeState.bind(this)}>change auth state</button>
+        </div>
+        <div>
+          <FormattedMessage id="guide.tips" />
         </div>
       </div>
     );
