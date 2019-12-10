@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { addLocaleData, IntlProvider } from 'react-intl';
 
 import configStore from './store/store-config.js';
 
@@ -13,6 +14,8 @@ import ProductList from 'page/product/index.jsx';
 import ProductSave from 'page/product/save.jsx';
 // 组件
 import Layout from 'component/layout/index.jsx';
+// 多语言
+import LocaleIntl from './LocaleIntl.jsx';
 
 const store = configStore();
 
@@ -20,23 +23,25 @@ class App extends React.Component {
   render() {
     return (
       <Provider store={store}>
-        <Router>
-          <Switch>
-            <Route path="/login" component={Login} />
-            <Route path="/" render={props => {
-              return (<Layout>
-                <Switch>
-                  <Route path="/" exact component={Home} />
-                  <Route path="/product" exact component={ProductList} />
-                  <Route path="/product/save" exact component={ProductSave} />
-                  <Route path="/product/category" exact component={Home} />
-                  <Route path="/order" exact component={Home} />
-                  <Route path="/newuser" exact component={UserList} />
-                </Switch>
-              </Layout>)
-            }} />
-          </Switch>
-        </Router>
+        <LocaleIntl>
+          <Router>
+            <Switch>
+              <Route path="/login" component={Login} />
+              <Route path="/" render={props => {
+                return (<Layout>
+                  <Switch>
+                    <Route path="/" exact component={Home} />
+                    <Route path="/product" exact component={ProductList} />
+                    <Route path="/product/save" exact component={ProductSave} />
+                    <Route path="/product/category" exact component={Home} />
+                    <Route path="/order" exact component={Home} />
+                    <Route path="/newuser" exact component={UserList} />
+                  </Switch>
+                </Layout>)
+              }} />
+            </Switch>
+          </Router>
+        </LocaleIntl>
       </Provider>
     );
   }

@@ -6,5 +6,10 @@ export default {
   },
   testStore: {
     msg: null
-  }
+  },
+  language: {
+    isFetching: true,
+    locale: 'cn',
+    error: null
+  },
 }
